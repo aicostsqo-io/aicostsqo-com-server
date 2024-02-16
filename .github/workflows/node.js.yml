@@ -31,6 +31,7 @@ jobs:
       
     - name: Install dependencies
       run: yarn install
+      
     - name: PROD_ENV Create
       run: |
         touch .env
