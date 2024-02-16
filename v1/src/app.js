@@ -6,6 +6,7 @@ const path = require("path");
 
 const config = require("./config");
 const loaders = require("./loaders");
+const dotenv = require('dotenv')
 
 // Routes
 const {
@@ -17,7 +18,9 @@ const {
 
 const handleResponse = require("./middlewares/handleResponseMiddleware");
 
-config();
+dotenv.config({
+        path: "./config/.env" //dotenv config içerisine config dosyamızın path ini verdik
+    });
 loaders();
 
 const app = express();
