@@ -33,6 +33,10 @@ jobs:
       run: yarn install
     - name: PROD_ENV Create
       run: |
-        touch deneme.txt
+        touch .env
+        echo "${{ secrets.PROD_ENV_FILE }}" > .env
+        
+    - run: pm2 restart AicostsqoCom
+
       
     
