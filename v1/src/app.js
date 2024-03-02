@@ -6,7 +6,6 @@ const path = require("path");
 
 const config = require("./config");
 const loaders = require("./loaders");
-const dotenv = require('dotenv')
 
 // Routes
 const {
@@ -18,9 +17,7 @@ const {
 
 const handleResponse = require("./middlewares/handleResponseMiddleware");
 
-dotenv.config({
-        path: "./config/.env" //dotenv config içerisine config dosyamızın path ini verdik
-    });
+config();
 loaders();
 
 const app = express();
@@ -29,27 +26,11 @@ const publicPath = path.join(__dirname, "..", "..", "public");
 app.use(express.json());
 // app.use(helmet());
 
-// app.use(
-//   csp({
-//     directives: {
-//       defaultSrc: ["'self'"],
-//       scriptSrc: [
-//         "'self'",
-//         "https://polyfill.io",
-//         "https://maps.googleapis.com",
-//         "'unsafe-inline'",
-//       ],
-//       // add any other directives as needed
-//     },
-//     reportOnly: false, // set to true to only report CSP violations without blocking them
-//     // add any other options as needed
-//   })
-// );
-
 app.use(cors());
 app.use(express.static(publicPath));
 
 app.listen(process.env.APP_PORT, () => {
+  console.log(`Proje ayağa kalktı. Port: ${process.env.APP_PORT}`);
   app.use(handleResponse);
   app.use("/company", CompanyRoutes);
   app.use("/site", SiteRoutes);
