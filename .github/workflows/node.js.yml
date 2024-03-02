@@ -3,7 +3,7 @@
 name: Node.js CI/CD
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "env-config" ]
   pull_request:
     branches: [ "main" ]
 jobs:
