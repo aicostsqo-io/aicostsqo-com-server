@@ -11,7 +11,7 @@ jobs:
     runs-on: self-hosted
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [21.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
     - uses: actions/checkout@v3
@@ -26,8 +26,8 @@ jobs:
       run: yarn install
     - name: PROD_ENV Create
       run: |
-        touch v1/src/config/.env
-        echo "${{ secrets.PROD_ENV_FILE }}" > v1/src/config/.env
+        touch v2/src/config/.env
+        echo "${{ secrets.PROD_ENV_FILE }}" > v2/src/config/.env
 
     - run: pm2 restart AicostsqoCom
         
