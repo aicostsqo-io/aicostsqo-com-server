@@ -18,12 +18,24 @@ const create = async (fieldData) => {
 };
 
 const getAllByProjectId = (projectId) => {
-  return Field.find({ projectId: projectId }).populate("fieldModel");
-  // .populate("rpModel");
+  return Field.find({ projectId: projectId })
+    .populate({
+      path: "fieldModel",
+      select: "properties.fieldName",
+    })
+    .populate({
+      path: "rpModel",
+      select: "name",
+    });
 };
 
 const getById = (id) => {
-  return Field.findById(id).populate("fieldModel").populate("rpModel");
+  return Field.findById(id)
+    .populate("fieldModel")
+    .populate({
+      path: "rpModel",
+      populate: { path: "discontinuitiesModelId" },
+    });
 };
 
 const removeById = (projectId) => {

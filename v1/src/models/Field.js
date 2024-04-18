@@ -1,6 +1,4 @@
 const Mongoose = require("mongoose");
-const FieldModel = require("./FieldModels/FieldModel");
-const RPModel = require("./FieldModels/RPModel");
 
 const FieldSchema = new Mongoose.Schema(
   {
