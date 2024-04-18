@@ -29,7 +29,7 @@ jobs:
         touch v1/src/config/.env
         echo "${{ secrets.PROD_ENV_FILE }}" > v1/src/config/.env
 
-    - run: pm2 restart AicostsqoCom
+    - run: pm2 restart AicostsqoCom 
         
 
       
